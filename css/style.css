@@ -22,12 +22,6 @@ body {
   color: #585a61;
 }
 
-#img-hero{
-  position: absolute;
-  left: 200px;
-  width: 40%;
-}
-
 a {
   color: #5777ba;
   text-decoration: none;
@@ -395,13 +389,18 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 30px;
   }
   #hero .hero-img img {
-    width: 70%;
+    width: 45%;
   }
 }
 @media (max-width: 575px) {
   #hero .hero-img img {
     width: 80%;
   }
+}
+
+.img-fluid {
+  max-width: 58%;
+  height: auto;
 }
 
 /*--------------------------------------------------------------
