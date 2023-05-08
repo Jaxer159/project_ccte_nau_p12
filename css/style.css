@@ -399,8 +399,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .img-fluid {
-  max-width: 58%;
+  max-width: 40%;
   height: auto;
+  margin-left: 100px;
 }
 
 /*--------------------------------------------------------------
