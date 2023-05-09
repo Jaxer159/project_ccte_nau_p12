@@ -84,9 +84,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 15px 0;
   background: rgba(255, 255, 255, 0.95);
 }
-#header.header-transparent {
-  background: transparent;
-}
 #header.header-scrolled {
   background: rgba(25, 25, 25, 0.95);
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -310,6 +307,7 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+
 #hero {
   width: 100%;
   position: relative;
