@@ -158,43 +158,6 @@
   });
 
   /**
-   * Gallery Slider
-   */
-  new Swiper('.gallery-slider', {
-    speed: 400,
-    loop: true,
-    centeredSlides: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 30
-      },
-      640: {
-        slidesPerView: 3,
-        spaceBetween: 30
-      },
-      992: {
-        slidesPerView: 5,
-        spaceBetween: 30
-      },
-      1200: {
-        slidesPerView: 7,
-        spaceBetween: 30
-      }
-    }
-  });
-
-  /**
    * Initiate gallery lightbox 
    */
   const galleryLightbox = GLightbox({
@@ -244,71 +207,6 @@
 
 })()
 
-const wrapper = document.querySelector(".blocker-wrapper");
-const button = wrapper.querySelector("button");
-const btnlayer = wrapper.querySelector(".bg-layer");
-
-if (document.getElementById("dl-ads") !== null){
-  document.getElementById("dl-ads").style.display = "none";
-}
-if (document.getElementById("dl-links") !== null){
-  document.getElementById("dl-links").style.display = 'none';
-}
-
-button.disabled = true;
-button.addEventListener("click", ()=>{
-  wrapper.classList.remove("show");
-  setCookie();
-});
-
-async function detectAdBlock() {
-  let adBlockEnabled = false
-
-  const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-  try {
-    await Promise.race([
-      fetch(new Request(googleAdUrl)),
-      new Promise((resolve, reject) => {
-        setTimeout(() => {
-          reject(new Error('Timeout'));
-        }, 5000);
-      })
-    ]);
-  } catch (e) {
-    adBlockEnabled = true;
-  } finally {
-    console.log(`Check1 -> AdBlock Enabled: ${adBlockEnabled}`);
-  }
-
-  if (adBlockEnabled == false){
-    if(document.getElementById('GzripwVoRsYx')){
-      console.log(`Check2 -> AdBlock Enabled: ${adBlockEnabled}`)
-    } else {
-      adBlockEnabled = true
-      console.log(`Check2 -> AdBlock Enabled: ${adBlockEnabled}`)
-    }
-  }
-
-  if (adBlockEnabled == true) {
-    let ads = getCookie();
-    if (ads == "yes"){
-      wrapper.classList.remove("show");
-    }else{
-      wrapper.classList.add("show");
-    }
-    if (document.getElementById("dl-ads") != null){
-      document.getElementById("dl-ads").style.display = "inherit";
-    }
-    runCounter();
-    runDLCounter();
-  }else{
-    wrapper.classList.remove("show");
-    if (document.getElementById("dl-links") != null){
-      document.getElementById("dl-links").style.display = 'inherit';
-    }
-  }
-}
-
 function setCookie(){
   var now = new Date();
   now.setTime(now.getTime() + 1 * 300 * 1000);
@@ -330,49 +228,3 @@ function getCookie(){
   }
   return "";
 }
-
-function runCounter() {
-  var count=5;
-  var counter=setInterval(timer, 1000);
-  function timer()
-  {
-    count=count-1;
-    if (count <= 0)
-    {
-      clearInterval(counter);
-      document.getElementById("timed").innerHTML="Okay, I'll Whitelist";
-      button.disabled = false;
-      btnlayer.classList.remove("disable");
-      return;
-    }
-    document.getElementById("timed").innerHTML="Please wait " + count + " seconds...";
-  }
-}
-
-function runDLCounter() {
-  var count=7;
-  var counter=setInterval(timer, 1000);
-  function timer()
-  {
-    count=count-1;
-    if (count <= 0)
-    {
-      clearInterval(counter);
-      if (document.getElementById("dl-ads") != null){
-        document.getElementById("dl-ads").remove();
-      }
-      if (document.getElementById("dl-links") != null){
-        document.getElementById("dl-links").style.display = 'inherit';
-      }
-      return;
-    }
-    if (document.getElementById("dl-ads") != null){
-      document.getElementById("dl-ads").innerHTML="Please disable adblock to download faster (" + count + ")";
-    }
-    if (document.getElementById("dl-links") != null){
-      document.getElementById("dl-links").style.display = 'none';
-    }
-  }
-}
-
-detectAdBlock()
