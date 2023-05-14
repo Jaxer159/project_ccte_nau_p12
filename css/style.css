@@ -17,8 +17,16 @@
   );
 }
 
-.line {
+.line_h {
   top:95px;
+  height: 2px;
+  background-color: black;
+  width: 1000%;
+  position: fixed;
+  left: -100px;
+}
+
+.line_main {
   height: 2px;
   background-color: black;
   width: 1000%;
