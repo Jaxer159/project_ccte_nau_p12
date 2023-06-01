@@ -206,25 +206,3 @@
   });
 
 })()
-
-function setCookie(){
-  var now = new Date();
-  now.setTime(now.getTime() + 1 * 300 * 1000);
-  document.cookie = "adsaway=yes; expires=" + now.toUTCString() + "; path=/";
-}
-
-function getCookie(){
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  let ads = "adsaway=";
-  for(let i = 0; i <ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(ads) == 0) {
-      return c.substring(ads.length, c.length);
-    }
-  }
-  return "";
-}

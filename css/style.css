@@ -17,13 +17,30 @@
   );
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 1px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 1px;
+}
+
 .line_h {
   top:95px;
   height: 2px;
   background-color: black;
   width: 1000%;
   position: fixed;
-  left: -100px;
+  left: -110px;
 }
 
 .line_main {
@@ -31,7 +48,7 @@
   background-color: black;
   width: 1000%;
   position: fixed;
-  left: -100px;
+  left: -110px;
 }
 
 body {
@@ -99,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 997;
   transition: all 0.5s;
   padding: 15px 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: transparent;
 }
 #header.header-scrolled {
   background: rgba(25, 25, 25, 0.95);
@@ -158,7 +175,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 0;
   margin-left: 5px;
 }
-.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+.navbar a:hover, .navbar .active:focus, .navbar li:hover > a {
   color: #5777ba;
 }
 .navbar .getstarted, .navbar .getstarted:focus {
@@ -329,7 +346,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 140px 0 100px 0;
+  padding: 140px 0 70px 0;
 }
 #hero::before {
   content: "";
